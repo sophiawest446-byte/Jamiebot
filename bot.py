@@ -3,9 +3,8 @@ from telegram import Update
 from telegram.ext import ApplicationBuilder, CommandHandler, MessageHandler, filters, ContextTypes
 from groq import Groq
 
-lines = open(os.path.expanduser("~/telegram_bot/.env")).read().strip().split("\n")
-BOT_TOKEN = lines[0].split("=")[1].strip()
-GROQ_API_KEY = lines[1].split("=")[1].strip()
+BOT_TOKEN = os.environ.get("BOT_TOKEN")
+GROQ_API_KEY = os.environ.get("GROQ_API_KEY")
 
 client = Groq(api_key=GROQ_API_KEY)
 
